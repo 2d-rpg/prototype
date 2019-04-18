@@ -38,4 +38,9 @@ bool readfile(const char *name, std::vector<char> &buffer){
   return true;
 }
 
+void print_error(){
+	static int count = 0;
+	std::cout << "print error " << ++count << ": " << glGetError() << std::endl;
+}
+
 #endif

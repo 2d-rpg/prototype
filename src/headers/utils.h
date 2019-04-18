@@ -8,4 +8,6 @@
 // Read a text file and put its content in a buffer
 bool readfile(const char *name, std::vector<char> &buffer);
 
+void print_error();
+
 #endif
