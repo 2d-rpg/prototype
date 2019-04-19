@@ -25,10 +25,10 @@
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "headers/shader.h"
-#include "headers/stb_image.h"
-#include "headers/texture_2D.h"
-#include "headers/sprite_loader.h"
+#include "shader.h"
+#include "stb_image.h"
+#include "texture_2D.h"
+#include "sprite_loader.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -66,10 +66,10 @@ int main(int argc, char **argv)
 	glViewport(0, 0, 800, 600);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-	Shader shader("../resources/shaders/vertex/test1.vs", "../resources/shaders/fragment/test1.fs");
+	Shader shader("./resources/shaders/vertex/test1.vs", "./resources/shaders/fragment/test1.fs");
 
 	Texture2D texture;
-	texture.generate("../resources/sprites/test/test0.jpg");
+	texture.generate("./resources/sprites/test/test0.jpg");
 
 	Sprite_Loader sprite_loader(shader);
 

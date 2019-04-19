@@ -7,7 +7,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
-#include "headers/utils.h"
+#include "utils.h"
 
 // Read a text file and put its content in a buffer
 bool readfile(const char *name, std::vector<char> &buffer){

@@ -1,4 +1,4 @@
-#include "headers/sprite_loader.h"
+#include "sprite_loader.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -39,8 +39,6 @@ void Sprite_Loader::draw(Texture2D &texture, glm::vec2 position, glm::vec2 size,
   glBindVertexArray(this->VAO);
   glDrawArrays(GL_TRIANGLES, 0, 6);
   glBindVertexArray(0);
-
-  this->shader;
 }
 
 void Sprite_Loader::init(){

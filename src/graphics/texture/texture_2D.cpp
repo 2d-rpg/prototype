@@ -1,7 +1,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "headers/stb_image.h"
-#include "headers/texture_2D.h"
+#include "stb_image.h"
+#include "texture_2D.h"
 
 // load texture with default settings
 Texture2D::Texture2D()
