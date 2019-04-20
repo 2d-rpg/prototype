@@ -1,28 +1,36 @@
 #ifndef _GAME_H
 #define _GMAE_H
 
+// game states
 enum GameState {
-  GAME_MAINMENU, // main menu
+    GAME_MAIN_MENU,
+    GAME_2D_MAP
 };
 
-class Game{
+class Game {
+private:
+    // game state
+    GameState state;
+    GLboolean keys[1024], processed_keys[1024];
+    GLuint width, height;
+
 public:
-  // game state
-  GameState state;
-  GLboolean keys[1024];
-  GLuint width, height;
+    // constructor/destructor
+    Game(GLuint width, GLuint height);
+    ~Game();
 
-  // constructor/destructor
-  Game(GLuint width, GLuint height);
-  ~Game();
+    // initialize game
+    void
+    init();
 
-  // initialize game
-  void init();
+private:
+    // game loop
+    void
+    process_input(GLfloat dt);
+    void
+    update(GLfloat dt);
+    void
+    render();
+};
 
-  // game loop
-  void process_input(GLfloat dt);
-  void update(GLfloat dt);
-  void render();
-}
-
-#endif
+#endif // ifndef _GAME_H

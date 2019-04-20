@@ -10,37 +10,42 @@
 #include "utils.h"
 
 // Read a text file and put its content in a buffer
-bool readfile(const char *name, std::vector<char> &buffer){
-  std::ifstream fs {name};
-  if(!fs){
-    std::cerr << "Failed to open file: '" << name << "'" << std::endl;
-    return false;
-  }
+bool
+readfile(const char * name, std::vector<char> &buffer)
+{
+    std::ifstream fs { name };
 
-  // Get file size
-  fs.seekg(0L, std::ios::end);
-  int size = fs.tellg();
+    if (!fs) {
+        std::cerr << "Failed to open file: '" << name << "'" << std::endl;
+        return false;
+    }
 
-  // Resize the buffer to the appropriate size
-  buffer.resize(size + 1);
+    // Get file size
+    fs.seekg(0L, std::ios::end);
+    int size = fs.tellg();
 
-  // Read the file from the beggining
-  fs.seekg(0L, std::ios::beg);
-  fs.read(buffer.data(), size);
-  buffer[size] = '\0';
+    // Resize the buffer to the appropriate size
+    buffer.resize(size + 1);
 
-  if(!fs){
-    std::cerr << "Failed while reading file: '" << name << "'" << std::endl;
-    return false;
-  }
+    // Read the file from the beggining
+    fs.seekg(0L, std::ios::beg);
+    fs.read(buffer.data(), size);
+    buffer[size] = '\0';
 
-  fs.close();
-  return true;
+    if (!fs) {
+        std::cerr << "Failed while reading file: '" << name << "'" << std::endl;
+        return false;
+    }
+
+    fs.close();
+    return true;
 }
 
-void print_error(){
-	static int count = 0;
-	std::cout << "print error " << ++count << ": " << glGetError() << std::endl;
+void
+print_error()
+{
+    static int count = 0;
+    std::cout << "print error " << ++count << ": " << glGetError() << std::endl;
 }
 
-#endif
+#endif // ifndef _UTILS_H

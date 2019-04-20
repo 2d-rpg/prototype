@@ -10,20 +10,23 @@
 
 class Sprite_Loader {
 public:
-  // constructor
-  Sprite_Loader(Shader &shader);
-  ~Sprite_Loader();
+    // constructor
+    Sprite_Loader(Shader &shader);
+    ~Sprite_Loader();
 
-  // renders a qual textured with given sprite
-  void draw(Texture2D &texture, glm::vec2 position, glm::vec2 size = glm::vec2(10, 10), GLfloat rotate = 0.0f, glm::vec3 color = glm::vec3(1.0f));
+    // renders a qual textured with given sprite
+    void
+    draw(Texture2D &texture, glm::vec2 position, glm::vec2 size = glm::vec2(10, 10), GLfloat rotate = 0.0f,
+      glm::vec3 color = glm::vec3(1.0f));
 
 private:
-  // render state
-  Shader shader;
-  GLuint VAO;
+    // render state
+    Shader shader;
+    GLuint VAO;
 
-  // initialize and configure the quad's buffer and vertex attributes
-  void init();
+    // initialize and configure the quad's buffer and vertex attributes
+    void
+    init();
 };
 
-#endif
+#endif // ifndef _SPRITE_LOADER_H
