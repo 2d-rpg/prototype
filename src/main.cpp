@@ -75,7 +75,7 @@ main(int argc, char ** argv)
     Shader shader("./resources/shaders/vertex/test1.vs", "./resources/shaders/fragment/test1.fs");
 
     Texture2D texture;
-    texture.generate("./resources/sprites/test/test1.jpg");
+    texture.generate("./resources/sprites/test/test0.jpg");
 
     Sprite_Loader sprite_loader(shader);
 
