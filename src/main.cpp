@@ -48,7 +48,7 @@ processInput(GLFWwindow * window)
 }
 
 int
-main(int argc, char ** argv)
+main()
 {
     // Initialize glfw
     glfwInit();
@@ -105,7 +105,6 @@ main(int argc, char ** argv)
     }
 
     glfwTerminate();
-    1;
 
     return 0;
 } // main
@@ -114,4 +113,5 @@ void
 framebuffer_size_callback(GLFWwindow * window, int width, int height)
 {
     glViewport(0, 0, width, height);
+    glfwMakeContextCurrent(window);
 }

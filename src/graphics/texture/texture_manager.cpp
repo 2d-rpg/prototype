@@ -5,6 +5,12 @@ TextureManager::TextureManager(const GLchar * vertex_shader,
   const GLchar *                              fragment_shader) : shader(vertex_shader, fragment_shader)
 { }
 
+TextureManager::~TextureManager(){
+  for(auto const& [key, texture] : textures){
+    delete(&texture);
+  }
+}
+
 void
 TextureManager::load(const char * file_path, std::string name)
 {

@@ -8,4 +8,4 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-Game::Game(GLuint widh, GLuint height) : state(GAME_MAIN_MENU), keys(), width(width), height(height){ }
+Game::Game(GLuint width, GLuint height) : state(GAME_MAIN_MENU), keys(), width(width), height(height){ }

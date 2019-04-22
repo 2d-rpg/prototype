@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include "utils.h"
+#include <cassert>
 
 // Read a text file and put its content in a buffer
 bool
@@ -46,6 +47,12 @@ print_error()
 {
     static int count = 0;
     std::cout << "print error " << ++count << ": " << glGetError() << std::endl;
+}
+
+int
+get_address_2D(int width, int height, int x, int y){
+  assert(width * y + x <= width * height);
+  return width * y + x;
 }
 
 #endif // ifndef _UTILS_H
