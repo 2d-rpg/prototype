@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h>
 #include "stb_image.h"
 #include "texture_2D.h"
+#include "utils.h"
 
 // load texture with default settings
 Texture2D::Texture2D()
@@ -11,7 +12,7 @@ Texture2D::Texture2D()
 // unload texture
 Texture2D::~Texture2D()
 {
-    glDeleteTextures(1, &(this->ID));
+    // glDeleteTextures(1, &(this->ID));
 }
 
 void
@@ -35,6 +36,9 @@ Texture2D::generate(const char * file_path)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, this->wrap_t);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, this->filter_min);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, this->filter_mag);
+
+    // generate mipmaps
+    glGenerateMipmap(GL_TEXTURE_2D);
 
     // unbind texture
     glBindTexture(GL_TEXTURE_2D, 0);

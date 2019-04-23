@@ -9,6 +9,7 @@
 bool readfile(const char *name, std::vector<char> &buffer);
 
 void print_error();
+void print_error(int i);
 
 int get_address_2D(int, int, int, int);
 

@@ -24,18 +24,24 @@ RendererMap::RendererMap(int width, int height) : width(width), height(height), 
     glGenBuffers(1, &VBO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
     glBindVertexArray(this->VAO);
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid *) 0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+
+    tm.get_shader().use();
+    glm::mat4 projection = glm::ortho(0.0f, static_cast<GLfloat>(screen_width), static_cast<GLfloat>(screen_height),
+        0.0f, -1.0f, 1.0f);
+    glUniformMatrix4fv(glGetUniformLocation(tm.get_shader().ID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+
+    map = std::vector<int>(width * height);
 }
 
 RendererMap::~RendererMap()
 {
-    delete(&tm);
     glDeleteVertexArrays(1, &this->VAO);
 }
 
@@ -71,10 +77,15 @@ RendererMap::render()
     int draw_x = (pos[0] - dx) / tile_size - screen_width / 2 / tile_size;
     int draw_y = (pos[1] - dy) / tile_size - screen_height / 2 / tile_size;
 
+    int init_draw_y = draw_y;
+
     for (int x = -dx; x <= screen_width; x += tile_size) {
+        draw_y = init_draw_y;
         for (int y = -dy; y <= screen_height; y += tile_size) {
-            draw_tile(std::to_string(get_tile(draw_x, draw_y)), glm::vec2(x, y),
-              glm::vec2(tile_size, tile_size), 0.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+            if (draw_x >= 0 && draw_y >= 0 && draw_x < width && draw_y < height) {
+                draw_tile(std::to_string(get_tile(draw_x, draw_y)), glm::vec2(x, y),
+                  glm::vec2(tile_size, tile_size), 0.0f, glm::vec3(1.0f, 1.0f, 1.0f));
+            }
             draw_y++;
         }
         draw_x++;

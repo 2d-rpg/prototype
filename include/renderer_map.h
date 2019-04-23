@@ -11,8 +11,8 @@
 class RendererMap {
 private:
     // shaders
-    const GLchar * vertex_shader_file { "../resources/shaders/vertex/renderer_map.vs" };
-    const GLchar * fragment_shader_file { "../resources/shaders/fragment/renderer_map.fs" };
+    const GLchar * vertex_shader_file { "./resources/shaders/vertex/renderer_map.vs" };
+    const GLchar * fragment_shader_file { "./resources/shaders/fragment/renderer_map.fs" };
 
     // rendering parameters
     const int tile_size {100};

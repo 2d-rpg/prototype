@@ -49,6 +49,12 @@ print_error()
     std::cout << "print error " << ++count << ": " << glGetError() << std::endl;
 }
 
+void
+print_error(int i)
+{
+    std::cout << "print error custom " << i << ": " << glGetError() << std::endl;
+}
+
 int
 get_address_2D(int width, int height, int x, int y){
   assert(width * y + x <= width * height);
