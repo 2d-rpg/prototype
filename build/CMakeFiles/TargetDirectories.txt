@@ -1,0 +1,3 @@
+/Users/shibainu/Documents2/GameProjects/2d-rpg/prototype/build/CMakeFiles/rebuild_cache.dir
+/Users/shibainu/Documents2/GameProjects/2d-rpg/prototype/build/CMakeFiles/edit_cache.dir
+/Users/shibainu/Documents2/GameProjects/2d-rpg/prototype/build/CMakeFiles/prototype.dir
