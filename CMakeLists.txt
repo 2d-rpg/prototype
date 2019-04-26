@@ -1,5 +1,11 @@
 # version
-cmake_minimum_required(VERSION 3.14)
+if(WIN32)
+  cmake_minimum_required(VERSION 3.14)
+elseif(APPLE)
+  cmake_minimum_required(VERSION 3.14)
+elseif(LINUX)
+  cmake_minimum_required(VERSION 3.10)
+endif()
 # project name
 project(prototype)
 # useful variable setting
@@ -9,8 +15,10 @@ set(CMAKE_BINARY_DIR build)
 # add include file in this project folder
 include_directories(include)
 # find package in local that is not in std include
-find_package(glfw3 3.3 REQUIRED)
-find_package(glm REQUIRED)
+if(APPLE)
+  find_package(glfw3 3.3 REQUIRED)
+  find_package(glm REQUIRED)
+endif()
 # create executable file
 add_executable(prototype
   src/renderer/map.cpp
