@@ -15,10 +15,8 @@ set(CMAKE_BINARY_DIR build)
 # add include file in this project folder
 include_directories(include)
 # find package in local that is not in std include
-if(APPLE)
-  find_package(glfw3 3.3 REQUIRED)
-  find_package(glm REQUIRED)
-endif()
+find_package(glfw3 3.3 REQUIRED)
+find_package(glm REQUIRED)
 # create executable file
 add_executable(prototype
   src/renderer/map.cpp
