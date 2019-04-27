@@ -96,8 +96,9 @@ int main() {
         glfwPollEvents();
 
         rm.set_camera(pos_x, pos_y);
-
+#ifndef __WIN32 // except Windows
         std::this_thread::sleep_for(std::chrono::milliseconds(16));
+#endif
     }
 
     glfwTerminate();
