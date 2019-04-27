@@ -3,7 +3,7 @@
 #define _UTILS_H
 
 =======
->>>>>>> e0eaba8d8a822fe8dfeb53680028476d5b43b4a7
+>>>>>>> f3f788d241a277ff1891a6e84a1e85a7b596693b
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <fstream>
@@ -25,7 +25,7 @@ readfile(const char * name, std::vector<char> &buffer)
 // Read a text file and put its content in a buffer
 bool readfile(const char* name, std::vector<char>& buffer) {
     std::ifstream fs{name};
->>>>>>> e0eaba8d8a822fe8dfeb53680028476d5b43b4a7
+>>>>>>> f3f788d241a277ff1891a6e84a1e85a7b596693b
 
     if (!fs) {
         std::cerr << "Failed to open file: '" << name << "'" << std::endl;
@@ -59,7 +59,7 @@ print_error()
 {
 =======
 void print_error() {
->>>>>>> e0eaba8d8a822fe8dfeb53680028476d5b43b4a7
+>>>>>>> f3f788d241a277ff1891a6e84a1e85a7b596693b
     static int count = 0;
     std::cout << "print error " << ++count << ": " << glGetError() << std::endl;
 }
@@ -75,4 +75,4 @@ int get_address_2D(int width, int height, int x, int y) {
     assert(width * y + x <= width * height);
     return width * y + x;
 }
->>>>>>> e0eaba8d8a822fe8dfeb53680028476d5b43b4a7
+>>>>>>> f3f788d241a277ff1891a6e84a1e85a7b596693b
