@@ -1,0 +1,5 @@
+# buildフォルダは含むがその中にあるファイルは入れない
+build/*
+!.gitkeep
+# .DS_Storeは入れない
+.DS_Store
