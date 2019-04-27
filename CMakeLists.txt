@@ -19,7 +19,11 @@ if(UNIX)
   find_package(glfw3 3.3 REQUIRED)
   find_package(glm REQUIRED)
 elseif(WIN32)
-  link_directories(C:/MinGW/lib)
+  if(MSYS)
+    link_directories(C:/msys64/mingw64/lib)
+  else()
+    link_directories(C:/MinGW/lib)
+  endif()
 endif()
 # create executable file
 add_executable(prototype
