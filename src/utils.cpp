@@ -27,11 +27,12 @@ bool readfile(const char* name, std::vector<char>& buffer) {
     fs.seekg(0L, std::ios::beg);
     fs.read(buffer.data(), size);
     buffer[size] = '\0';
-
+#ifndef WIN32
     if (!fs) {
         std::cerr << "Failed while reading file: '" << name << "'" << std::endl;
         return false;
     }
+#endif
 
     fs.close();
     return true;

@@ -9,8 +9,16 @@ set(CMAKE_BINARY_DIR build)
 # add include file in this project folder
 include_directories(include)
 # find package in local that is not in std include
-find_package(glfw3 3.3 REQUIRED)
-find_package(glm REQUIRED)
+if(UNIX)
+  find_package(glfw3 3.3 REQUIRED)
+  find_package(glm REQUIRED)
+elseif(WIN32)
+  if(MSYS)
+    link_directories(C:/msys64/mingw64/lib)
+  else()
+    link_directories(C:/MinGW/lib)
+  endif()
+endif()
 # create executable file
 add_executable(prototype
   src/renderer/map.cpp
@@ -24,6 +32,14 @@ add_executable(prototype
 # compile option
 target_compile_options(prototype PUBLIC -O2 -Wall -Wextra)
 # link libraries
-target_link_libraries(prototype glfw glm)
+if(UNIX)
+  target_link_libraries(prototype glfw glm)
+elseif(WIN32)
+  target_link_libraries(prototype glfw3dll)
+endif()
 # run after build
-#add_custom_target(run ALL COMMAND "./prototype")
+if(WIN32)
+  add_custom_target(run COMMAND "./prototype.exe" DEPENDS "./prototype.exe")
+elseif(UNIX)
+  add_custom_target(run COMMAND "./prototype" DEPENDS "./prototype")
+endif()
