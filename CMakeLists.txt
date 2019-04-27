@@ -3,7 +3,7 @@ if(WIN32)
   cmake_minimum_required(VERSION 3.14)
 elseif(APPLE)
   cmake_minimum_required(VERSION 3.14)
-elseif(LINUX)
+elseif(UNIX AND NOT APPLE)
   cmake_minimum_required(VERSION 3.10)
 endif()
 # project name
