@@ -39,6 +39,7 @@ extern "C" {
 #include <thread>
 #include <vector>
 #include <random>
+#include "text_renderer.h"
 
 int pos_x, pos_y;
 float speed = 5;
@@ -88,14 +89,22 @@ main()
     glViewport(0, 0, 800, 600);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    RendererMap rm(20, 20);
+    // set OpenGL options
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+
+      TextRenderer tr = TextRenderer();
+
+    RendererMap rm(20, 80);
     rm.add_texture("./resources/sprites/test/grass/grass0.jpg", 0);
     rm.add_texture("./resources/sprites/test/grass/grass1.jpg", 1);
     rm.add_texture("./resources/sprites/test/grass/stone0.jpg", 2);
     // rm.add_texture("./resources/sprites/test/test3.jpg", 3);
 
-    std::vector<int> map(20 * 20);
-    for(int i = 0; i < 20 * 20; i++){
+    std::vector<int> map(20 * 80);
+    for(int i = 0; i < 20 * 80; i++){
       map[i] = rand() % static_cast<int>(2 + 1);
     }
     rm.load_map(map);

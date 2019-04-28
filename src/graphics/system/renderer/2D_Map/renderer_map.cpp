@@ -117,7 +117,7 @@ RendererMap::draw_tile(std::string key, glm::vec2 position, glm::vec2 size, GLfl
 
     // render
     glActiveTexture(GL_TEXTURE0);
-    tm.get_texture(key).bind();
+    tm.get_texture(key)->bind();
 
     glBindVertexArray(this->VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);

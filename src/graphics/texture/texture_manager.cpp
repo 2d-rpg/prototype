@@ -12,8 +12,8 @@ TextureManager::~TextureManager(){ }
 void
 TextureManager::load(const char * file_path, std::string name)
 {
-    textures[name] = Texture2D();
-    textures[name].generate(file_path);
+    textures.insert({ name, Texture2D() });
+    textures.at(name).generate(file_path);
 };
 
 Shader
@@ -22,7 +22,7 @@ TextureManager::get_shader()
     return this->shader;
 }
 
-Texture2D
+Texture2D *
 TextureManager::get_texture(std::string key)
 {
     std::map<std::string, Texture2D>::iterator ret = this->textures.find(key);
@@ -30,5 +30,5 @@ TextureManager::get_texture(std::string key)
     if (ret == this->textures.end()) {
         std::cerr << "could not find texture with that key. (TextureManager)" << std::endl;
     }
-    return ret->second;
+    return &(ret->second);
 }

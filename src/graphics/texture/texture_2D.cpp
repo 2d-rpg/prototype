@@ -12,7 +12,7 @@ Texture2D::Texture2D()
 // unload texture
 Texture2D::~Texture2D()
 {
-    // glDeleteTextures(1, &(this->ID));
+    glDeleteTextures(1, &(this->ID));
 }
 
 void

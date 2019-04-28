@@ -15,7 +15,7 @@ private:
     const GLchar * fragment_shader_file { "./resources/shaders/fragment/renderer_map.fs" };
 
     // rendering parameters
-    const int tile_size {100};
+    const int tile_size {10};
     const int screen_width {800};
     const int screen_height {600};
 

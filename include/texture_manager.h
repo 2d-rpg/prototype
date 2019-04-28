@@ -1,3 +1,6 @@
+#ifndef _TEXTURE_MANAGER_H
+#define _TEXTURE_MANAGER_H
+
 #include "utils.h"
 #include "texture_2D.h"
 #include "shader.h"
@@ -23,6 +26,8 @@ public:
     get_shader();
 
     // get a texture from string
-    Texture2D
+    Texture2D *
     get_texture(std::string key);
 };
+
+#endif
