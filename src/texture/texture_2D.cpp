@@ -1,12 +1,12 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "stb_image.h"
-#include "texture_2D.h"
-#include "utils.h"
+#include <stb/stb_image.h>
+#include <texture/texture_2D.h>
+#include <utils.h>
 
 // load texture with default settings
 Texture2D::Texture2D()
-    : width(0), height(0), internal_format(GL_RGB), format(GL_RGB),
+    : width(0), height(0), internal_format(GL_RGBA), format(GL_RGBA),
     wrap_s(GL_REPEAT), wrap_t(GL_REPEAT), filter_mag(GL_LINEAR), filter_min(GL_LINEAR){ }
 
 // unload texture
@@ -19,8 +19,8 @@ void
 Texture2D::generate(const char * file_path)
 {
     // load texture from file
-    int width, height;
-    unsigned char * img_data = stbi_load(file_path, &width, &height, NULL, 0);
+    int width, height, nrchannels;
+    unsigned char * img_data = stbi_load(file_path, &width, &height, &nrchannels, STBI_rgb_alpha);
 
     this->width  = width;
     this->height = height;

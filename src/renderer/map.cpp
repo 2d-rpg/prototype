@@ -121,7 +121,7 @@ RendererMap::draw_tile(std::string key, glm::vec2 position, glm::vec2 size, GLfl
 
     glBindVertexArray(this->VAO);
     glDrawArrays(GL_TRIANGLES, 0, 6);
-    glBindVertexArray(0);rm
+    glBindVertexArray(0);
 }
 
 void
