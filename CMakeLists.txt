@@ -10,7 +10,7 @@ set(CMAKE_BINARY_DIR build)
 include_directories(include)
 # find package in local that is not in std include
 if(UNIX)
-  find_package(glfw3 3.3 REQUIRED)
+  find_package(glfw3 3.2 REQUIRED)
   find_package(glm REQUIRED)
 elseif(WIN32)
   if(MSYS)

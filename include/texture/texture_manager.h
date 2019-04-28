@@ -21,5 +21,5 @@ public:
     Shader get_shader();
 
     // get a texture from string
-    Texture2D get_texture(std::string key);
+    Texture2D * get_texture(std::string key);
 };
