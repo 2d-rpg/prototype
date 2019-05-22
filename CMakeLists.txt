@@ -26,6 +26,7 @@ add_executable(prototype
   src/shader/shader.cpp
   src/texture/texture_2D.cpp
   src/texture/texture_manager.cpp
+  src/game.cpp
   src/glad.c
   src/stb_image.cpp
   src/utils.cpp
