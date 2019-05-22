@@ -22,6 +22,7 @@ endif()
 # create executable file
 add_executable(prototype
   src/renderer/map.cpp
+  src/renderer/text.cpp
   src/shader/shader.cpp
   src/texture/texture_2D.cpp
   src/texture/texture_manager.cpp
