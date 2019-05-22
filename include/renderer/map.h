@@ -1,3 +1,5 @@
+#pragma once
+
 #include <texture/texture_manager.h>
 #include <vector>
 #include <string>
@@ -32,6 +34,7 @@ private:
     void draw_tile(std::string key, glm::vec2 position, glm::vec2 size, GLfloat rotate,
                    glm::vec3 color);
 
+    // vertex array object                
     GLuint VAO;
 
 public:

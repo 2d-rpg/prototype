@@ -20,6 +20,7 @@ extern "C" {
 #include <thread>
 #include <vector>
 #include <random>
+#include <renderer/text.h>
 
 int   pos_x, pos_y;
 float speed = 5;
@@ -67,6 +68,11 @@ int main() {
     glViewport(0, 0, 800, 600);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
+    // set OpenGL options
+    glEnable(GL_CULL_FACE);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     RendererMap rm(20, 20);
     rm.add_texture("../resources/images/test/map/floor.gif", 0);
     rm.add_texture("../resources/images/test/map/throne.gif", 1);
@@ -79,6 +85,8 @@ int main() {
     }
     rm.load_map(map);
 
+    // test for text rendering
+    TextRenderer tr = TextRenderer();
 
     // render loop
     while (!glfwWindowShouldClose(window)) {
@@ -90,6 +98,9 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT);
 
         rm.render();
+        tr.render(U"よしいのうんこー", glm::vec3(100, 0, 100), glm::vec2(0, 200), 0.50f);
+        tr.render(U"おなにーきんぐ　がおおくりする、", glm::vec3(300, 100, 50), glm::vec2(0, 400), 0.20f);
+        tr.render(U"まんこ", glm::vec3(0, 0, 0), glm::vec2(0, 0), 0.05f);
 
         // check all events and swap buffers
         glfwSwapBuffers(window);
@@ -100,7 +111,6 @@ int main() {
         std::this_thread::sleep_for(std::chrono::milliseconds(16));
 #endif
     }
-
     glfwTerminate();
 
     return 0;

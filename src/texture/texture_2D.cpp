@@ -28,6 +28,7 @@ Texture2D::generate(const char * file_path)
     // generate texture for OpenGL
     glGenTextures(1, &(this->ID));
     glBindTexture(GL_TEXTURE_2D, this->ID);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     glTexImage2D(GL_TEXTURE_2D, 0, this->internal_format, this->width, this->height, 0, this->format, GL_UNSIGNED_BYTE,
       img_data);
 

@@ -30,4 +30,7 @@ public:
 
     // bind texture for use
     void bind() const;
+
+    // delete copy constructor to disallow copying
+    Texture2D(const Texture2D&) = delete;
 };
