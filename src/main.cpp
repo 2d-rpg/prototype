@@ -101,6 +101,7 @@ int main() {
         tr.render(U"よしいのうんこー", glm::vec3(100, 0, 100), glm::vec2(0, 200), 0.50f);
         tr.render(U"おなにーきんぐ　がおおくりする、", glm::vec3(300, 100, 50), glm::vec2(0, 400), 0.20f);
         tr.render(U"まんこ", glm::vec3(0, 0, 0), glm::vec2(0, 0), 0.05f);
+        ;
 
         // check all events and swap buffers
         glfwSwapBuffers(window);
