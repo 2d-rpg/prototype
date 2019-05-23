@@ -6,13 +6,13 @@
 #include <iostream>
 
 
-Shader::Shader(const char* v_file_path, const char* f_file_path) {
-    if (!load_shaders(v_file_path, f_file_path, ID)) {
+Shader::Shader(const char* v_file_path, const char* f_file_path) : ID(load_shaders(v_file_path, f_file_path)){
+    if (!ID) {
         std::cerr << "Failed to construct the shader program." << std::endl;
     }
 }
 
-void Shader::use() {
+void Shader::use() const {
     glUseProgram(ID);
 }
 
@@ -68,14 +68,15 @@ bool Shader::compile_shader(const char* vsource, const char* fsource,
 }  // Shader::compile_shader
 
 // load shader programs from file
-bool Shader::load_shaders(const char* vfile, const char* ffile, unsigned int& shader_program) {
+unsigned int Shader::load_shaders(const char* vfile, const char* ffile) {
+    unsigned int shader_program;
     std::vector<char> vsource, fsource;
 
     if (!(readfile(vfile, vsource) && readfile(ffile, fsource))) {
-        return false;
+        return 0;
     }
     if (!compile_shader(vsource.data(), fsource.data(), shader_program)) {
-        return false;
+        return 0;
     }
-    return true;
+    return shader_program;
 }

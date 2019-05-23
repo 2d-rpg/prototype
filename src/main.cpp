@@ -21,6 +21,7 @@ extern "C" {
 #include <vector>
 #include <random>
 #include <renderer/text.h>
+#include <renderer/renderer.h>
 
 int   pos_x, pos_y;
 float speed = 5;
@@ -73,11 +74,13 @@ int main() {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    RendererMap rm(20, 20);
-    rm.add_texture("../resources/images/test/map/floor.gif", 0);
-    rm.add_texture("../resources/images/test/map/throne.gif", 1);
-    rm.add_texture("../resources/images/test/map/wall.gif", 2);
-    rm.add_texture("../resources/images/test/map/treasure.gif", 3);
+    Renderer r(800, 600);
+
+    RendererMap rm(20, 20, r);
+    r.add_texture("../resources/images/test/map/floor.gif", 0);
+    r.add_texture("../resources/images/test/map/throne.gif", 1);
+    r.add_texture("../resources/images/test/map/wall.gif", 2);
+    r.add_texture("../resources/images/test/map/treasure.gif", 3);
 
     std::vector<int> map(20 * 20);
     for (int i = 0; i < 20 * 20; i++) {
@@ -101,7 +104,6 @@ int main() {
         tr.render(U"よしいのうんこー", glm::vec3(100, 0, 100), glm::vec2(0, 200), 0.50f);
         tr.render(U"おなにーきんぐ　がおおくりする、", glm::vec3(300, 100, 50), glm::vec2(0, 400), 0.20f);
         tr.render(U"まんこ", glm::vec3(0, 0, 0), glm::vec2(0, 0), 0.05f);
-        ;
 
         // check all events and swap buffers
         glfwSwapBuffers(window);
