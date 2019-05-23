@@ -20,17 +20,8 @@ elseif(WIN32)
   endif()
 endif()
 # create executable file
-add_executable(prototype
-  src/renderer/map.cpp
-  src/renderer/text.cpp
-  src/shader/shader.cpp
-  src/texture/texture_2D.cpp
-  src/texture/texture_manager.cpp
-  src/game.cpp
-  src/glad.c
-  src/stb_image.cpp
-  src/utils.cpp
-  src/main.cpp)
+file(GLOB_RECURSE sources "src/*.cpp" "src/*.c")
+add_executable(prototype ${sources})
 # compile option
 target_compile_options(prototype PUBLIC -O2 -Wall -Wextra)
 # link libraries

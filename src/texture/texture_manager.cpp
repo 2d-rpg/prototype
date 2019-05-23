@@ -2,9 +2,8 @@
 #include <shader/shader.h>
 
 TextureManager::TextureManager(const GLchar * vertex_shader,
-  const GLchar *                              fragment_shader) : shader(vertex_shader, fragment_shader)
+  const GLchar *                              fragment_shader) : shader(vertex_shader, fragment_shader), textures(std::map<std::string, Texture2D>())
 {
-    textures = std::map<std::string, Texture2D>();
 }
 
 TextureManager::~TextureManager(){ }

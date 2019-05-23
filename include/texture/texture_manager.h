@@ -7,9 +7,13 @@
 #include <string>
 
 class TextureManager {
+public:
+    // shader
+    const Shader                           shader;
+
 private:
+    // a map that gets Texture2Ds from
     std::map<std::string, Texture2D> textures;
-    Shader                           shader;
 
 public:
     // constructor

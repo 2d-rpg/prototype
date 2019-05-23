@@ -8,13 +8,13 @@
 class Shader {
 public:
     // the program id
-    unsigned int ID;
+    const unsigned int ID;
 
     // the constructor will compile the shader from the given source files.
     Shader(const GLchar* v_file_path, const GLchar* f_file_path);
 
     // use the shader
-    void use();
+    void use() const;
 
     // uniform functions
     template <typename T>
@@ -25,5 +25,5 @@ private:
     bool compile_shader(const char* vsrouce, const char* fsource, unsigned int& id);
 
     // load shader programs from file
-    bool load_shaders(const char* vfile, const char* ffile, unsigned int& id);
+    unsigned int load_shaders(const char* vfile, const char* ffile);
 };
